@@ -54,13 +54,13 @@ QSizeF QwtMathMLTextEngine::textSize( const QFont &font,
     Q_UNUSED( flags );
 
     static QString t;
-    static QSize sz;
+    static QSizeF sz;
 
     if ( text != t )
     {
         QwtMathMLDocument doc;
         doc.setContent( text );
-        doc.setBaseFontPointSize( font.pointSize() );
+        doc.setBaseFontPointSize( font.pointSizeF() );
 
         sz = doc.size();
         t = text;
@@ -96,7 +96,7 @@ void QwtMathMLTextEngine::draw( QPainter *painter, const QRectF &rect,
 {
     QwtMathMLDocument doc;
     doc.setContent( text );
-    doc.setBaseFontPointSize( painter->font().pointSize() );
+    doc.setBaseFontPointSize( painter->font().pointSizeF() );
 
     const QSizeF docSize = doc.size();
 
